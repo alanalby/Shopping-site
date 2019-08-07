@@ -1,0 +1,423 @@
+{% load staticfiles%}
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>DressUpBaby</title>
+<!-- <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Smart Bazaar Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" /> -->
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+		function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- Custom Theme files -->
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+<script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/bootstrap.min.js'%}"></script>
+
+<!-- <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css" media="all" /> -->
+<link href="{%static 'css/style.css'%}" rel="stylesheet" type="text/css" media="all" /> 
+<link href="{% static 'css/animate.min.css' %}" rel="stylesheet" type="text/css" media="all" /><!-- animation -->
+<link href="{% static 'css/menu.css'%}" rel="stylesheet" type="text/css" media="all" /> <!-- menu style -->  
+<!-- //Custom Theme files -->
+<!-- font-awesome icons -->
+<link href="{%static 'css/font-awesome.css' %}" rel="stylesheet"> 
+<!-- //font-awesome icons -->
+<!-- js -->
+<!-- <script src="{%static 'js/jquery-2.2.3.min.js' %}"></script>  -->
+<!-- //js --> 
+<!-- web-fonts -->
+<link href='//fonts.googleapis.com/css?family=Roboto+Condensed:400,300,300italic,400italic,700,700italic' rel='stylesheet' type='text/css'>
+<link href='//fonts.googleapis.com/css?family=Lovers+Quarrel' rel='stylesheet' type='text/css'>
+<link href='//fonts.googleapis.com/css?family=Offside' rel='stylesheet' type='text/css'>
+<link href='//fonts.googleapis.com/css?family=Tangerine:400,700' rel='stylesheet' type='text/css'>
+<!-- web-fonts --> 
+<script src="{% static 'js/owl.carousel.js' %}"></script>  
+
+
+<script>
+$(document).ready(function() { 
+	$("#owl-demo").owlCarousel({ 
+	  autoPlay: 3000, //Set AutoPlay to 3 seconds 
+	  items :4,
+	  itemsDesktop : [640,5],
+	  itemsDesktopSmall : [480,2],
+	  navigation : true
+ 
+	}); 
+}); 
+</script>
+<script src="{% static 'js/jquery-scrolltofixed-min.js' %}" type="text/javascript"></script>
+<script>
+    $(document).ready(function() {
+
+        // Dock the header to the top of the window when scrolled past the banner. This is the default behaviour.
+
+        $('.header-two').scrollToFixed();  
+        // previous summary up the page.
+
+        var summaries = $('.summary');
+        summaries.each(function(i) {
+            var summary = $(summaries[i]);
+            var next = summaries[i + 1];
+
+            summary.scrollToFixed({
+                marginTop: $('.header-two').outerHeight(true) + 10, 
+                zIndex: 999
+            });
+        });
+    });
+</script>
+<!-- start-smooth-scrolling -->
+<script type="text/javascript" src="{%static 'js/move-top.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/easing.js' %}"></script>	
+<script type="text/javascript">
+		jQuery(document).ready(function($) {
+			$(".scroll").click(function(event){		
+				event.preventDefault();
+				$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+			});
+		});
+</script>
+<!-- //end-smooth-scrolling -->
+<!-- smooth-scrolling-of-move-up -->
+	<script type="text/javascript">
+		$(document).ready(function() {
+		
+			var defaults = {
+				containerID: 'toTop', // fading element id
+				containerHoverID: 'toTopHover', // fading element hover id
+				scrollSpeed: 1200,
+				easingType: 'linear' 
+			};
+			
+			$().UItoTop({ easingType: 'easeOutQuart' });
+			
+		});
+	</script>
+	<!-- //smooth-scrolling-of-move-up -->
+<script src="{%static 'js/bootstrap.js' %}"></script>	
+</head>
+<body>
+	
+	
+	<!-- header -->
+	<div class="header">
+		<div class="w3ls-header"><!--header-one--> 
+			<div class="w3ls-header-left">
+				<p><a href="#">UPTO $50 OFF ON FROCKS | USE COUPON CODE RDEF056 </a></p>
+			</div>
+			{%if user.is_superuser %}
+			<div class="w3ls-header-right">
+				<ul>
+					<li class="dropdown head-dpdn">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user" aria-hidden="true"></i> hi {{user}}<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li id="password_change_click"><a href="#">Reset Password </a></li> 
+				
+							<li>  <a href="{% url 'product_create' %}">Create Product</a></li> 
+							<li>  <a href="{% url 'product_stock' %}">Add Stock</a></li>  
+							<li>  <a href="{% url 'product_list' %}">List Product</a></li>  
+
+
+							<li><a href="{% url 'customer_logout' %}">Log Out</a></li> 
+						</ul> 
+					</li> 
+					
+
+					
+					<li class="dropdown head-dpdn">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-percent" aria-hidden="true"></i> Today's Deals<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="">Cash Back Offers</a></li> 
+							<li><a href="">Product Discounts</a></li>
+							<li><a href="">Special Offers</a></li> 
+						</ul> 
+					</li> 
+					<li class="dropdown head-dpdn">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-gift" aria-hidden="true"></i> Gift Cards<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="">Product Gift card</a></li> 
+							<li><a href="">Occasions Register</a></li>
+							<li><a href="">View Balance</a></li> 
+						</ul> 
+					</li> 
+					<li class="dropdown head-dpdn">
+						<a href="" class="dropdown-toggle"><i class="fa fa-map-marker" aria-hidden="true"></i> Store Finder</a>
+					</li> 
+					<li class="dropdown head-dpdn">
+						<a href="" class="dropdown-toggle"><i class="fa fa-credit-card-alt" aria-hidden="true"></i> Credit Card</a>
+					</li> 
+					<li class="dropdown head-dpdn">
+						<a href="" class="dropdown-toggle"><i class="fa fa-question-circle" aria-hidden="true"></i> Help</a>
+					</li>
+				</ul>
+			</div>
+
+			<div class="modal" id="change_pwd_modal" role="dialog">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="model-header">
+							<button type="button" class="close class2" data-dismiss="modal" >&times;</button>
+							<center><h4>Password Reset Menu</h4></center>
+						</div>
+						<div class="modal-body">
+							<table>
+								<thead>
+								<tr>
+															<th>Current Password : </th>
+															<th><input type="password" id="old_password" placeholder="Current Password"></th>
+								</tr>
+								<tr>
+															<th>New Password : </th>
+															<th><input type="password" id="new_password1" placeholder="NEw Password"></th>
+								</tr>
+								<tr>
+															<th>Repeat Password : </th>
+															<th><input type="password" id="new_password2" placeholder="Repeat New Password"></th>
+								</tr>
+
+								</thead>
+
+							</table>
+						</div>
+						<div class="modal-footer">
+							<button class="btn btn-danger" data-dismiss="modal" id="submit">Submit</button>
+							<button class="btn btn-danger class2" data-dismiss="modal">Close</button>
+												
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+
+		<script type="text/javascript">
+    $(document).ready(function(){
+		
+
+    	$("#password_change_click").click(function(){
+		$("#change_pwd_modal").modal('show');
+	});
+
+	$("#submit").click(function(){
+		var form = $(this).closest("form");
+        var old_pwd = $('#old_password').val();
+        var new_pwd =  $('#new_password1').val();
+        var new_pwd2 = $('#new_password2').val()  
+        if (new_pwd==new_pwd2){
+            $.ajax({
+	        url: '/change/password/',
+	        type:"POST",
+	        data: {'csrfmiddlewaretoken': '{{ csrf_token }}','old_password':old_pwd,'new_password':new_pwd },
+	        dataType: 'json',
+	        success: function (response) {
+	        	alert(response);
+	        	$("#change_pwd_modal").modal('hide');
+	            }
+	        });
+
+        }    
+        else{
+            alert("Password miss match");
+        }  
+            
+		});
+    });
+</script>
+
+			
+			<div class="clearfix"> </div> 
+		</div>
+		<div class="header-two"><!-- header-two -->
+			<div class="container">
+				<div class="header-logo">
+					<h1><a href="{% url 'admin_home'%}"><span>D</span>ressUP <i>Baby</i></a></h1>
+					<h6>Your stores. Your place.</h6> 
+				</div>	
+				<div class="header-search">
+					<form action="#" method="post">
+						<input type="search" name="Search" placeholder="Search for a Product..." required="">
+						<button type="submit" class="btn btn-default" aria-label="Left Align">
+							<i class="fa fa-search" aria-hidden="true"> </i>
+						</button>
+					</form>
+				</div>
+				<div class="header-cart"> 
+					<div class="my-account">
+						<a href="{% url 'inbox_usr' %}"><i class="fa fa-map-marker" aria-hidden="true"></i> View Message</a>						
+					</div>
+					<div class="cart"> 
+						<form action="#" method="post" class="last"> 
+							<input type="hidden" name="cmd" value="_cart" />
+							<input type="hidden" name="display" value="1" />
+							<button class="w3view-cart" type="submit" name="submit" value=""><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></button>
+						</form>  
+					</div>
+					<div class="clearfix"> </div> 
+				</div> 
+				<div class="clearfix"> </div>
+			</div>		
+		</div><!-- //header-two -->
+		
+
+
+
+
+	<div class="welcome">
+		<div class="container" >
+		<div class="col-sm-12 jumbotron">
+		</div>
+		
+		<table class="table table-hover">
+			<thead>
+				<tr class="danger">
+					<th>Customer Name</th>
+					<th>Customer Location</th>
+					<th>Customer Phone Number 1</th>
+					<th>Customer Phone Number 2</th>
+
+					<th>Customer Pin code</th>
+					<th>Product Name</th>
+					<th>Product Size</th>
+					<th>Product Quantity</th>
+					<!-- <th>Status</th> -->
+
+			</thead>
+			{% for x in test %}
+			<tbody>
+				<tr class="info">
+					<th> {{x.username}}</th>
+					<th>{{x.user_location}} </th>
+					<th> {{x.user_contact_no1}} </th>
+					<th> {{x.user_contact_no2}} </th>
+
+					<th> {{x.user_zip_code}} </th>
+					<th> {{x.product_name}}</th>
+					<th>{{x.size}} </th>
+					<th>{{x.amount}} </th>
+					
+
+				</tr>
+
+			</tbody>
+		{% endfor %}
+			
+			
+		</table>
+		</div>
+	</div>
+	
+
+
+
+
+
+		{% endif %}
+
+	<!-- //subscribe --> 
+	<!-- footer -->
+	<div class="footer">
+		<div class="container">
+			<div class="footer-info w3-agileits-info">
+				<div class="col-md-4 address-left agileinfo">
+					<div class="footer-logo header-logo">
+						<h2><a href="index.html"><span>D</span>ressUp <i>Baby</i></a></h2>
+						<h6>kingini, Neericode</h6>
+					</div>
+					<ul>
+						<li><i class="fa fa-map-marker"></i> Neericode, Cochin INDIA.</li>
+						<li><i class="fa fa-mobile"></i> 80 86 89 1234 </li>
+						<li><i class="fa fa-phone"></i> +222 11 4444 </li>
+						<li><i class="fa fa-envelope-o"></i> <a href="mailto:example@mail.com"> kingini@gamil.com</a></li>
+					</ul> 
+				</div>
+				<div class="col-md-8 address-right">
+					<div class="col-md-4 footer-grids">
+						<h3>Company</h3>
+						<ul>
+							<li><a href="about.html">About Us</a></li>
+							<li><a href="marketplace.html">Marketplace</a></li>  
+							<li><a href="values.html">Core Values</a></li>  
+							<li><a href="privacy.html">Privacy Policy</a></li>
+						</ul>
+					</div>
+					<div class="col-md-4 footer-grids">
+						<h3>Services</h3>
+						<ul>
+							<li><a href="contact.html">Contact Us</a></li>
+							<li><a href="login.html">Returns</a></li> 
+							<li><a href="faq.html">FAQ</a></li>
+							<li><a href="sitemap.html">Site Map</a></li>
+							<li><a href="login.html">Order Status</a></li>
+						</ul> 
+					</div>
+					<div class="col-md-4 footer-grids">
+						<h3>Payment Methods</h3>
+						<ul>
+							<li><i class="fa fa-laptop" aria-hidden="true"></i> Net Banking</li>
+							<li><i class="fa fa-money" aria-hidden="true"></i> Cash On Delivery</li>
+							<li><i class="fa fa-pie-chart" aria-hidden="true"></i>EMI Conversion</li>
+							<li><i class="fa fa-gift" aria-hidden="true"></i> E-Gift Voucher</li>
+							<li><i class="fa fa-credit-card" aria-hidden="true"></i> Debit/Credit Card</li>
+						</ul>  
+					</div>
+					<div class="clearfix"></div>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+	<!-- //footer -->		
+	<div class="copy-right"> 
+		<div class="container">
+			<p>© 2017 DressUpBaby. All rights reserved | Design by <a href="http://w3layouts.com"> Alan Alby</a></p>
+		</div>
+	</div> 
+	<!-- cart-js -->
+	<script src="{% static 'js/minicart.js' %}"></script>
+	<script>
+        w3ls.render();
+
+        w3ls.cart.on('w3sb_checkout', function (evt) {
+        	var items, len, i;
+
+        	if (this.subtotal() > 0) {
+        		items = this.items();
+
+        		for (i = 0, len = items.length; i < len; i++) {
+        			items[i].set('shipping', 0);
+        			items[i].set('shipping2', 0);
+        		}
+        	}
+        });
+    </script>  
+	<!-- //cart-js --> 	 
+	<!-- menu js aim -->
+	<script src="{% static 'js/jquery.menu-aim.js'%}"> </script>
+	<script src="{% static 'js/main.js' %}"></script> <!-- Resource jQuery -->
+	<!-- //menu js aim --> 
+	<!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+
+
+    
+
+
+    
+
+    
+</body>
+</html>
